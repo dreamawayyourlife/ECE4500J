@@ -1,0 +1,50 @@
+{
+    "original_file_name": "huawei.jpg",
+    "total_chunks": 11,
+    "chunks": [
+        {
+            "chunk_hash": "97bfd531",
+            "repo_path": "backups/full_backup/chunk_97bfd531.bin"
+        },
+        {
+            "chunk_hash": "98503aa2",
+            "repo_path": "backups/full_backup/chunk_98503aa2.bin"
+        },
+        {
+            "chunk_hash": "20802982",
+            "repo_path": "backups/full_backup/chunk_20802982.bin"
+        },
+        {
+            "chunk_hash": "bdc4b1c7",
+            "repo_path": "backups/full_backup/chunk_bdc4b1c7.bin"
+        },
+        {
+            "chunk_hash": "c434325c",
+            "repo_path": "backups/full_backup/chunk_c434325c.bin"
+        },
+        {
+            "chunk_hash": "49b6e440",
+            "repo_path": "backups/full_backup/chunk_49b6e440.bin"
+        },
+        {
+            "chunk_hash": "e38e619b",
+            "repo_path": "backups/full_backup/chunk_e38e619b.bin"
+        },
+        {
+            "chunk_hash": "0007fed4",
+            "repo_path": "backups/full_backup/chunk_0007fed4.bin"
+        },
+        {
+            "chunk_hash": "3d52c5be",
+            "repo_path": "backups/full_backup/chunk_3d52c5be.bin"
+        },
+        {
+            "chunk_hash": "e453d0c5",
+            "repo_path": "backups/full_backup/chunk_e453d0c5.bin"
+        },
+        {
+            "chunk_hash": "8368e492",
+            "repo_path": "backups/full_backup/chunk_8368e492.bin"
+        }
+    ]
+}
