@@ -1,0 +1,178 @@
+---
+title: "HW 5"
+author: "Kang Yuan"
+date: "2024-11-27"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(data.table) # allows us to use function fread,
+# which quickly reads data from csv files 
+
+
+# load data
+load_digits <- function(subset=NULL, normalize=TRUE) {
+  
+#Load digits and labels from digits.csv.
+
+#Args:
+#subset: A subset of digit from 0 to 9 to return.
+#If not specified, all digits will be returned.
+#normalize: Whether to normalize data values to between 0 and 1.
+
+#Returns:
+#digits: Digits data matrix of the subset specified.
+#The shape is (n, p), where
+#n is the number of examples,
+#p is the dimension of features.
+#labels: Labels of the digits in an (n, ) array.
+#Each of label[i] is the label for data[i, :]
+
+# load digits.csv, adopted from sklearn.
+
+df <- fread("digits.csv") 
+df <- as.matrix(df)
+
+## only keep the numbers we want.
+if (length(subset)>0) {
+  
+  c <- dim(df)[2]
+  l_col <- df[,c]
+  index = NULL
+  
+  for (i in 1:length(subset)){
+    
+    number = subset[i]
+    index = c(index,which(l_col == number))
+  }
+  sort(index)
+  df = df[index,]
+}
+
+# convert to arrays.
+digits = df[,-1]
+labels = df[,c]
+
+# Normalize digit values to 0 and 1.
+if (normalize == TRUE) {
+  digits = digits - min(digits)
+digits = digits/max(digits)}
+
+
+# Change the labels to 0 and 1.
+for (i in 1:length(subset)) {
+  labels[labels == subset[i]] = i-1
+}
+
+return(list(digits, labels))
+
+}
+
+split_samples <- function(digits,labels) {
+
+# Split the data into a training set (70%) and a testing set (30%).
+
+num_samples <- dim(digits)[1]
+num_training <- round(num_samples*0.7)
+indices = sample(1:num_samples, size = num_samples)
+training_idx <- indices[1:num_training]
+testing_idx <- indices[-(1:num_training)]
+
+return (list(digits[training_idx,], labels[training_idx],
+        digits[testing_idx,], labels[testing_idx]))
+}
+
+
+#====================================
+# Load digits and labels.
+result = load_digits(subset=c(1, 7), normalize=TRUE)
+digits = result[[1]]
+labels = result[[2]]
+
+result = split_samples(digits,labels)
+training_digits = result[[1]]
+training_labels = result[[2]]
+testing_digits = result[[3]]
+testing_labels = result[[4]]
+
+# print dimensions
+length(training_digits)
+length(testing_digits)
+
+# Train a model and display training accuracy.
+##### Put your work here
+
+
+```
+#### 1.
+```{r}
+hinge_loss <- function(w, X, y, C) {
+  # Hinge loss in standard form
+  # Args:
+  # w: weight vector
+  # X: input features (n x p matrix)
+  # y: labels (-1 or 1)
+  # C: penalty parameter for slack variables
+  
+  n <- nrow(X)
+  margins <- 1 - y * (X %*% w)
+  slack_loss <- sum(pmax(0, margins))
+  regularization_loss <- 0.5 * sum(w^2)
+  loss <- regularization_loss + C * slack_loss
+  return(loss)
+}
+
+gradient <- function(w, X, y, C) {
+ 
+  n <- nrow(X)
+  margins <- 1 - y * (X %*% w)
+  indicator <- ifelse(margins > 0, 1, 0) 
+  grad <- w - C * t(X) %*% (indicator * y) / n
+  return(grad)
+}
+
+train_svm <- function(X, y, C=0.1, lr=0.1, epochs=1000) {
+  # Train linear SVM using gradient descent
+  # Args:
+  # X: input features (n x p matrix)
+  # y: labels (-1 or 1)
+  # C: penalty parameter for slack variables
+  # lr: learning rate
+  # epochs: number of iterations
+  
+  n <- nrow(X)
+  p <- ncol(X)
+  w <- matrix(0, nrow=p, ncol=1)
+  
+  for (epoch in 1:epochs) {
+    grad <- gradient(w, X, y, C)
+    w <- w - lr * grad
+    if (epoch %% 100 == 0) {
+      cat("Epoch:", epoch, "Loss:", hinge_loss(w, X, y, C), "\n")
+    }
+  }
+  return(w)
+}
+
+predict_svm <- function(X, w) {
+  # Predict using the trained linear SVM
+  # Args:
+  # X: input features (n x p matrix)
+  # w: weight vector
+  
+  preds <- X %*% w
+  return(ifelse(preds >= 0, 1, -1))
+}
+
+training_labels_svm <- ifelse(training_labels == 1, 1, -1)
+testing_labels_svm <- ifelse(testing_labels == 1, 1, -1)
+
+training_digits <- cbind(1, training_digits) 
+testing_digits <- cbind(1, testing_digits)
+
+C <- 0.1  
+lr <
