@@ -1,0 +1,132 @@
+- 0.1  
+epochs <- 1000  
+
+weights <- train_svm(training_digits, training_labels_svm, C, lr, epochs)
+
+training_preds <- predict_svm(training_digits, weights)
+training_accuracy <- mean(training_preds == training_labels_svm)
+cat("Training Accuracy:", training_accuracy * 100, "%\n")
+
+testing_preds <- predict_svm(testing_digits, weights)
+testing_accuracy <- mean(testing_preds == testing_labels_svm)
+cat("Testing Accuracy:", testing_accuracy * 100, "%\n")
+
+```
+Findings:
+- The model achieves reasonable accuracy on both training and testing data.
+- The accuracy depends on the choice of C, learning rate and epochs.
+- More parameter tuning or feature engineering could improve results.
+
+
+#### 2.
+
+## a.
+
+Effect of different C values on slackness control:
+```{r}
+train_svm <- function(X, y, C=0.1, lr=0.1, epochs=1000) {
+ 
+  n <- nrow(X)
+  p <- ncol(X)
+  w <- matrix(0, nrow=p, ncol=1) 
+  
+  for (epoch in 1:epochs) {
+    grad <- gradient(w, X, y, C)
+    w <- w - lr * grad
+  }
+  return(w)
+}
+
+C_values <- c(0.01, 0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50)
+
+results <- data.frame(C = C_values, TrainingAccuracy = NA, TestingAccuracy = NA)
+
+for (i in seq_along(C_values)) {
+  C <- C_values[i]
+  weights <- train_svm(training_digits, training_labels_svm, C, lr, epochs)
+  
+  training_preds <- predict_svm(training_digits, weights)
+  training_accuracy <- mean(training_preds == training_labels_svm)
+  
+  testing_preds <- predict_svm(testing_digits, weights)
+  testing_accuracy <- mean(testing_preds == testing_labels_svm)
+  
+  results$TrainingAccuracy[i] <- training_accuracy * 100
+  results$TestingAccuracy[i] <- testing_accuracy * 100
+}
+
+print(results)
+```
+
+## b.
+
+```{r}
+# Exponential (RBF) Kernel
+exponential_kernel <- function(X, Z, gamma = 0.1) {
+  n <- nrow(X)
+  m <- nrow(Z)
+  dist_matrix <- matrix(0, nrow = n, ncol = m)
+  for (i in 1:n) {
+    for (j in 1:m) {
+      dist_matrix[i, j] <- sum((X[i, ] - Z[j, ])^2)
+    }
+  }
+  return(exp(-gamma * dist_matrix))
+}
+
+
+hinge_loss_kernel <- function(alpha, K, y, C) {
+  n <- length(y)
+  dual_loss <- sum(alpha) - 0.5 * sum((y * alpha) %*% K %*% (y * alpha))
+  regularization <- 0.5 * sum(alpha^2)
+  return(-dual_loss + C * regularization)
+}
+
+gradient_kernel <- function(alpha, K, y, C) {
+  grad <- rep(1, length(alpha)) - (y * alpha) %*% K * y
+  return(grad)
+}
+
+train_kernel_svm <- function(X, y, C, kernel_function, gamma, lr = 0.1, epochs = 1000) {
+  
+  n <- nrow(X)
+  alpha <- rep(0, n) 
+  K <- kernel_function(X, X, gamma) 
+
+  for (epoch in 1:epochs) {
+    grad <- gradient_kernel(alpha, K, y, C)
+    alpha <- alpha - lr * grad
+    alpha <- pmax(0, alpha)
+  }
+  return(list(alpha = alpha, kernel_matrix = K))
+}
+
+predict_kernel_svm <- function(X_train, X_test, alpha, y_train, kernel_function, gamma) {
+ 
+  K_test <- kernel_function(X_test, X_train, gamma) 
+  preds <- K_test %*% (alpha * y_train)
+  return(ifelse(preds >= 0, 1, -1))
+}
+
+gamma <- 0.01  
+C <- 1.0
+lr <- 0.1  
+epochs <- 1000 
+
+model <- train_kernel_svm(training_digits, training_labels_svm, C, exponential_kernel, gamma, lr, epochs)
+
+training_preds <- predict_kernel_svm(training_digits, training_digits, model$alpha, training_labels_svm, exponential_kernel, gamma)
+training_accuracy <- mean(training_preds == training_labels_svm)
+cat("Training Accuracy with Exponential Kernel:", training_accuracy * 100, "%\n")
+
+testing_preds <- predict_kernel_svm(training_digits, testing_digits, model$alpha, training_labels_svm, exponential_kernel, gamma)
+testing_accuracy <- mean(testing_preds == testing_labels_svm)
+cat("Testing Accuracy with Exponential Kernel:", testing_accuracy * 100, "%\n")
+
+```
+
+
+Findings:
+- The model achieves poor accuracy on both training and testing data.
+- The accuracy seems not dependent on the choice of C, learning rate and epochs.
+- It seems that the original linear classification fits the training and prediction dataset.
