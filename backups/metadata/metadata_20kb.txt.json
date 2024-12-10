@@ -1,0 +1,26 @@
+{
+    "original_file_name": "20kb.txt",
+    "total_chunks": 5,
+    "chunks": [
+        {
+            "chunk_hash": "6efb6de6",
+            "repo_path": "backups/full_backup/chunk_6efb6de6.bin"
+        },
+        {
+            "chunk_hash": "9ede38a6",
+            "repo_path": "backups/full_backup/chunk_9ede38a6.bin"
+        },
+        {
+            "chunk_hash": "297fa77a",
+            "repo_path": "backups/full_backup/chunk_297fa77a.bin"
+        },
+        {
+            "chunk_hash": "95fed64e",
+            "repo_path": "backups/full_backup/chunk_95fed64e.bin"
+        },
+        {
+            "chunk_hash": "f235cfef",
+            "repo_path": "backups/full_backup/chunk_f235cfef.bin"
+        }
+    ]
+}
