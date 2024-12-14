@@ -1,0 +1,10 @@
+{
+    "original_file_name": "11.txt",
+    "total_chunks": 1,
+    "chunks": [
+        {
+            "chunk_hash": "f6e0a1e2",
+            "repo_path": "backups/full_backup/chunk_f6e0a1e2.bin"
+        }
+    ]
+}
