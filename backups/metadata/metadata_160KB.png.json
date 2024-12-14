@@ -1,0 +1,166 @@
+{
+    "original_file_name": "160KB.png",
+    "total_chunks": 40,
+    "chunks": [
+        {
+            "chunk_hash": "e373c8df",
+            "repo_path": "backups/full_backup/chunk_e373c8df.bin"
+        },
+        {
+            "chunk_hash": "75a5e19d",
+            "repo_path": "backups/full_backup/chunk_75a5e19d.bin"
+        },
+        {
+            "chunk_hash": "b2a9a968",
+            "repo_path": "backups/full_backup/chunk_b2a9a968.bin"
+        },
+        {
+            "chunk_hash": "cdaad7cf",
+            "repo_path": "backups/full_backup/chunk_cdaad7cf.bin"
+        },
+        {
+            "chunk_hash": "631ebec4",
+            "repo_path": "backups/full_backup/chunk_631ebec4.bin"
+        },
+        {
+            "chunk_hash": "f853458b",
+            "repo_path": "backups/full_backup/chunk_f853458b.bin"
+        },
+        {
+            "chunk_hash": "9b74db3b",
+            "repo_path": "backups/full_backup/chunk_9b74db3b.bin"
+        },
+        {
+            "chunk_hash": "bd2b0ae6",
+            "repo_path": "backups/full_backup/chunk_bd2b0ae6.bin"
+        },
+        {
+            "chunk_hash": "16894110",
+            "repo_path": "backups/full_backup/chunk_16894110.bin"
+        },
+        {
+            "chunk_hash": "be9e9120",
+            "repo_path": "backups/full_backup/chunk_be9e9120.bin"
+        },
+        {
+            "chunk_hash": "12c41e62",
+            "repo_path": "backups/full_backup/chunk_12c41e62.bin"
+        },
+        {
+            "chunk_hash": "7f36c9e5",
+            "repo_path": "backups/full_backup/chunk_7f36c9e5.bin"
+        },
+        {
+            "chunk_hash": "f7baf694",
+            "repo_path": "backups/full_backup/chunk_f7baf694.bin"
+        },
+        {
+            "chunk_hash": "8c2e47b1",
+            "repo_path": "backups/full_backup/chunk_8c2e47b1.bin"
+        },
+        {
+            "chunk_hash": "c737b206",
+            "repo_path": "backups/full_backup/chunk_c737b206.bin"
+        },
+        {
+            "chunk_hash": "1293626e",
+            "repo_path": "backups/full_backup/chunk_1293626e.bin"
+        },
+        {
+            "chunk_hash": "70ccc377",
+            "repo_path": "backups/full_backup/chunk_70ccc377.bin"
+        },
+        {
+            "chunk_hash": "89b15347",
+            "repo_path": "backups/full_backup/chunk_89b15347.bin"
+        },
+        {
+            "chunk_hash": "a2931b12",
+            "repo_path": "backups/full_backup/chunk_a2931b12.bin"
+        },
+        {
+            "chunk_hash": "06923769",
+            "repo_path": "backups/full_backup/chunk_06923769.bin"
+        },
+        {
+            "chunk_hash": "e8e61613",
+            "repo_path": "backups/full_backup/chunk_e8e61613.bin"
+        },
+        {
+            "chunk_hash": "e5285126",
+            "repo_path": "backups/full_backup/chunk_e5285126.bin"
+        },
+        {
+            "chunk_hash": "d3b5bd2f",
+            "repo_path": "backups/full_backup/chunk_d3b5bd2f.bin"
+        },
+        {
+            "chunk_hash": "79ad0280",
+            "repo_path": "backups/full_backup/chunk_79ad0280.bin"
+        },
+        {
+            "chunk_hash": "64baeaa5",
+            "repo_path": "backups/full_backup/chunk_64baeaa5.bin"
+        },
+        {
+            "chunk_hash": "1f66ccd3",
+            "repo_path": "backups/full_backup/chunk_1f66ccd3.bin"
+        },
+        {
+            "chunk_hash": "01a624b3",
+            "repo_path": "backups/full_backup/chunk_01a624b3.bin"
+        },
+        {
+            "chunk_hash": "15b4043b",
+            "repo_path": "backups/full_backup/chunk_15b4043b.bin"
+        },
+        {
+            "chunk_hash": "171a4fb3",
+            "repo_path": "backups/full_backup/chunk_171a4fb3.bin"
+        },
+        {
+            "chunk_hash": "2f8136e7",
+            "repo_path": "backups/full_backup/chunk_2f8136e7.bin"
+        },
+        {
+            "chunk_hash": "8a5fbc1b",
+            "repo_path": "backups/full_backup/chunk_8a5fbc1b.bin"
+        },
+        {
+            "chunk_hash": "4fdf7230",
+            "repo_path": "backups/full_backup/chunk_4fdf7230.bin"
+        },
+        {
+            "chunk_hash": "7adb0d8a",
+            "repo_path": "backups/full_backup/chunk_7adb0d8a.bin"
+        },
+        {
+            "chunk_hash": "25ef7357",
+            "repo_path": "backups/full_backup/chunk_25ef7357.bin"
+        },
+        {
+            "chunk_hash": "62b1bbfe",
+            "repo_path": "backups/full_backup/chunk_62b1bbfe.bin"
+        },
+        {
+            "chunk_hash": "24ce38a3",
+            "repo_path": "backups/full_backup/chunk_24ce38a3.bin"
+        },
+        {
+            "chunk_hash": "6fc7c6aa",
+            "repo_path": "backups/full_backup/chunk_6fc7c6aa.bin"
+        },
+        {
+            "chunk_hash": "1add6e9f",
+            "repo_path": "backups/full_backup/chunk_1add6e9f.bin"
+        },
+        {
+            "chunk_hash": "7ca3fd32",
+            "repo_path": "backups/full_backup/chunk_7ca3fd32.bin"
+        },
+        {
+            "chunk_hash": "680cf658",
+            "repo_path": "backups/full_backup/chunk_680cf658.bin"
+        }
+    ]
+}
